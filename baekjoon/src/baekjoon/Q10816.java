@@ -25,29 +25,16 @@ public class Q10816 {
 		}
 		
 		int m = Integer.parseInt(reader.readLine());
-		
-		int[] list = new int[m];
+		StringBuilder sb = new StringBuilder();
+
 		s = reader.readLine().split(" ");
 		for (int i=0; i<m; i++) {
-			int num = Integer.parseInt(s[i]);
-			list[i] = num;
+			sb.append(map.getOrDefault(Integer.parseInt(s[i]), 0)).append(' ');
 		}
 		
-		for (int i=0; i<m; i++) {
-			if (i == m-1) {
-				if (map.get(list[i]) == null) {
-					System.out.print("0");
-				} else {
-					System.out.print(map.get(list[i]));
-				}
-			} else {
-				if (map.get(list[i]) == null) {
-					System.out.print("0 ");
-				} else {
-					System.out.print(map.get(list[i]) + " ");
-				}
-			}
-		}
+		System.out.println(sb);
+		
+		
 		
 		
 	}
