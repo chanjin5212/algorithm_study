@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 class Solution {
 	
     public int[] solution(int[] lottos, int[] win_nums) {
-        int[] answer = new int[2];
         
         int count = 0;
         Set<Integer> winNums = Arrays.stream(lottos).boxed().collect(Collectors.toSet());
@@ -23,49 +22,16 @@ class Solution {
         		zero++;
         	}
         }
-        int rank = 0;
-        switch (count+zero) {
-        	case 2:
-        		rank = 5;
-        		break;
-        	case 3:
-        		rank = 4;
-        		break;
-        	case 4:
-        		rank = 3;
-        		break;
-        	case 5:
-        		rank = 2;
-        		break;
-        	case 6:
-        		rank = 1;
-        		break;
-        	default: 
-        		rank = 6;
-        		break;
+        
+        int maxrank = 7 - (count + zero);
+        int minrank = 7 - count;
+        if (maxrank > 6) {
+        	maxrank = 6;
         }
-        answer[0] = rank;
-        switch (count) {
-        	case 2:
-        		rank = 5;
-        		break;
-        	case 3:
-        		rank = 4;
-        		break;
-        	case 4:
-        		rank = 3;
-        		break;
-        	case 5:
-        		rank = 2;
-        		break;
-        	case 6:
-        		rank = 1;
-        		break;
-        	default: 
-        		rank = 6;
-        		break;
+        if (minrank > 6) {
+        	minrank = 6;
         }
-        answer[1] = rank;
-        return answer;
+        
+        return new int[] {maxrank, minrank};
     }
 }

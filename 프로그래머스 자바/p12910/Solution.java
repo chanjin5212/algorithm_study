@@ -1,20 +1,27 @@
 package programmers.p12910;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Solution {
-	public Integer[] solution(int []arr) {
+class Solution {
+    public Integer[] solution(int[] arr, int divisor) {
+        
         
         ArrayList<Integer> list = new ArrayList<Integer>();
-        list.add(arr[0]);
-        for (int i=1; i<arr.length; i++) {
-        	if (arr[i-1] != arr[i]) {
+        for (int i=0; i<arr.length; i++) {
+        	if (arr[i] % divisor == 0) {
         		list.add(arr[i]);
         	}
         }
-            
-        Integer[] answer1 = list.toArray(new Integer[0]);
         
-        return answer1;
+        if (list.size() == 0) {
+        	list.add(-1);
+        }
+        
+        Collections.sort(list);
+        
+        Integer[] answer = list.toArray(new Integer[0]);
+        
+        return answer;
     }
 }
