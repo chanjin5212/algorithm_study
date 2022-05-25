@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
+//https://www.acmicpc.net/problem/1012
 public class Q1012 {
 	
 	static boolean[][] check;

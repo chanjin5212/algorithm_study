@@ -1,6 +1,10 @@
 package programmers.p72412;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 class Solution {
 	
@@ -12,34 +16,61 @@ class Solution {
 		System.out.println(a.solution(info, query));
 	}
 	
-	public ArrayList<Integer> solution(String[] info, String[] query) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        ArrayList<String[]> list = new ArrayList<String[]>();
-        for (int i=0; i<info.length; i++) {
-        	String[] a = info[i].split(" ");
-        	list.add(a);
-        }
-        
-        int[] index = {0, 2, 4, 6, 7};
-        for (int i=0; i<query.length; i++) {
-        	int count2 = 0;
-        	String[] b = query[i].split(" ");
-        	for (int j=0; j<list.size(); j++) {
-        		int count = 0;
-        		for (int k=0; k<index.length-1; k++) {
-        			if (list.get(j)[k].equals(b[index[k]]) || b[index[k]].equals("-")) {
-        				count++;
-        			}
-        		}
-        		if (count == 4) {
-        			if (Integer.parseInt(list.get(j)[4]) >= Integer.parseInt(b[7])) {
-        				count2++;
-        			}
-        		}
-        	}
-        	result.add(count2);
-        }
-        
-        return result;
+	public List<Integer> solution(String[] info, String[] query) {
+        List<Integer> answer = new ArrayList<>();
+		Map<String, ArrayList<Integer>> map = new HashMap<>();
+		
+		for (String str : info) {
+			String[] in = str.split(" ");
+			for (int i=0; i<(1 << 4); i++) {
+				StringBuilder sb = new StringBuilder();
+				for (int j=0; j<4; j++) {
+					if ((i & (1 << j)) > 0) {
+						sb.append(in[j]);
+					} else {
+						sb.append("-");
+					}
+				}
+				map.putIfAbsent(sb.toString(), new ArrayList<Integer>());
+				map.get(sb.toString()).add(Integer.parseInt(in[4]));
+			}			
+			
+		}
+		
+		for (List<Integer> list : map.values()) {
+			Collections.sort(list);
+		}
+		
+		for (String str : query) {
+			String[] qu = str.split(" ");
+			List<Integer> list = map.get(qu[0] + qu[2] + qu[4] + qu[6]);
+			if (list != null) {
+				answer.add(list.size() - lowerbound(list, Integer.parseInt(qu[7])));
+			} else {
+				answer.add(0);
+			}
+			
+		}
+		
+		return answer;
     }
+
+	private int lowerbound(List<Integer> list, int target) {
+		
+		int low = 0;
+		int high = list.size();
+		
+		while (low < high) {
+			int mid = (low + high) / 2;
+			
+			if (list.get(mid) >= target) {
+				high = mid;
+			} else {
+				low = mid + 1;
+			}
+		}
+		return high;
+	}
+
+
 }
