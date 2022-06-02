@@ -21,8 +21,6 @@ public class Q1389 {
 		n = Integer.parseInt(str[0]);
 		m = Integer.parseInt(str[1]);
 		check = new int[n+1][n+1];
-		
-		
 		for (int i=0; i<m; i++) {
 			str = reader.readLine().split(" ");
 			int x = Integer.parseInt(str[0]);
@@ -40,11 +38,9 @@ public class Q1389 {
 			}
 		}
 		System.out.println(min_num);
-		
 	}
 
 	private static int bfs(int i) {
-		
 		List<Integer> list = new ArrayList<Integer>();
 		for (int a=1; a<=n; a++) {
 			visited = new boolean[n+1];
@@ -54,9 +50,7 @@ public class Q1389 {
 				Queue<Integer> queue = new LinkedList<>();
 				queue.offer(i);
 				visited[i] = true;
-				
 				int level = 1;
-				
 				loop:while(!queue.isEmpty()) {
 					int size = queue.size();
 					for (int j=0; j<size; j++) {
@@ -72,19 +66,10 @@ public class Q1389 {
 							}
 						}
 					}
-					
 					level++;
 				}
-				
 			}
 		}
-		
 		return list.stream().mapToInt(Integer::intValue).sum();
-		
-		
 	}
-	
-	
-	
-	
 }

@@ -1,13 +1,13 @@
 package baekjoon;
 
-import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.lang.Math;
 
-public class Test {
-	
-	public static void main(String[] args) throws Exception {
-		
-		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-		
-		System.out.println(map.get(8));
-	}
+public class Test{
+    
+    
 }

@@ -74,8 +74,4 @@ public class Q1780 {
 		
 	}
 
-	
-
-	
-
 }

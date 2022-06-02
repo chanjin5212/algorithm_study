@@ -22,8 +22,6 @@ public class Q1620 {
 			map.put(i+"", s);
 			mapTwo.put(s, i+"");
 		}
-		
-		
 		for (int i=0; i<m; i++) {
 			String input = reader.readLine();
 			if (map.get(input) == null) {
