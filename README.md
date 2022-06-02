@@ -1,4 +1,4 @@
-# 코딩테스트 공부 :memo:
+# 알고리즘 공부 :memo:
 
 ### 사용 언어: <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"/> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>
 
