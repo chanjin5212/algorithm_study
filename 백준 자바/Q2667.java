@@ -9,7 +9,6 @@ public class Q2667 {
 
     private static int[][] house;
     private static boolean[][] visited;
-    private static int count = 0;
     private static List<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
@@ -29,11 +28,10 @@ public class Q2667 {
             for (int j=0; j<n; j++) {
                 if (house[i][j] != 0 && !visited[i][j]) {
                     bfs(i, j);
-                    count++;
                 }
             }
         }
-        System.out.println(count);
+        System.out.println(list.size());
         Collections.sort(list);
         for (int i : list) {
             System.out.println(i);
