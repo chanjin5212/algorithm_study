@@ -17,12 +17,12 @@ public class Q9019 {
             int a = Integer.parseInt(str[0]);
             int b = Integer.parseInt(str[1]);
             String[] s = new String[10000];
-            boolean[] visited = new boolean[10000];
+            boolean[] visited_cheese = new boolean[10000];
             Arrays.fill(s, "");
 
             Queue<Integer> queue = new LinkedList<>();
             queue.offer(a);
-            visited[a] = true;
+            visited_cheese[a] = true;
             while (!queue.isEmpty()) {
                 int temp = queue.poll();
                 int aD = (2*temp) % 10000;
@@ -30,25 +30,25 @@ public class Q9019 {
                 int aL = (temp % 1000) * 10 + (temp / 1000);
                 int aR = (temp / 10) + (temp % 10) * 1000;
 
-                if (!visited[aD]) {
+                if (!visited_cheese[aD]) {
                     queue.offer(aD);
-                    visited[aD] = true;
+                    visited_cheese[aD] = true;
                     s[aD] = s[temp] + "D";
                 }
 
-                if (!visited[aS]) {
+                if (!visited_cheese[aS]) {
                     queue.offer(aS);
-                    visited[aS] = true;
+                    visited_cheese[aS] = true;
                     s[aS] += s[temp] + "S";
                 }
-                if (!visited[aL]) {
+                if (!visited_cheese[aL]) {
                     queue.offer(aL);
-                    visited[aL] = true;
+                    visited_cheese[aL] = true;
                     s[aL] += s[temp] + "L";
                 }
-                if (!visited[aR]) {
+                if (!visited_cheese[aR]) {
                     queue.offer(aR);
-                    visited[aR] = true;
+                    visited_cheese[aR] = true;
                     s[aR] += s[temp] + "R";
                 }
 

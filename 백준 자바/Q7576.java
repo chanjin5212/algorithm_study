@@ -11,7 +11,7 @@ public class Q7576 {
     static int m;
     static int n;
     static int[][] tomato;
-    static boolean[][] visited;
+    static boolean[][] visited_cheese;
     static Queue<int[]> queue = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
@@ -20,7 +20,7 @@ public class Q7576 {
         m = Integer.parseInt(s[0]);
         n = Integer.parseInt(s[1]);
         tomato = new int[n][m];
-        visited = new boolean[n][m];
+        visited_cheese = new boolean[n][m];
 
         for (int i=0; i<n; i++) {
             String[] str = reader.readLine().split(" ");
@@ -28,12 +28,12 @@ public class Q7576 {
                 tomato[i][j] = Integer.parseInt(str[j]);
                 if (Integer.parseInt(str[j]) == 1) {
                     queue.offer(new int[] {i, j});
-                    visited[i][j] = true;
+                    visited_cheese[i][j] = true;
                 }
             }
         }
 
-        int a = bfs();
+        int a = bfs_cheese();
         for (int i=0; i<n; i++) {
             for (int j=0; j<m; j++) {
                 if (tomato[i][j] == 0) {
@@ -46,7 +46,7 @@ public class Q7576 {
 
     }
 
-    private static int bfs() {
+    private static int bfs_cheese() {
 
         int[] dx = {1, -1, 0, 0};
         int[] dy = {0 ,0, 1, -1};
@@ -66,7 +66,7 @@ public class Q7576 {
                     if (tomato[nextX][nextY] == 0) {
                         tomato[nextX][nextY] = 1;
                         queue.offer(new int[] {nextX, nextY});
-                        visited[nextX][nextY] = true;
+                        visited_cheese[nextX][nextY] = true;
                     }
                 }
             }

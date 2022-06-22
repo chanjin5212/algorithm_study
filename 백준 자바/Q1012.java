@@ -29,7 +29,7 @@ public class Q1012 {
 			for (int j=0; j<m; j++) {
 				for (int o=0; o<n; o++) {
 					if (cabbage[j][o] == 1 && !check[j][o]) {
-						bfs(j, o, m, n, cabbage);
+						bfs_cheese(j, o, m, n, cabbage);
 						count++;
 					}
 				}
@@ -38,7 +38,7 @@ public class Q1012 {
 		}
 	}
 
-	private static void bfs(int startX, int startY, int m, int n, int[][] cabbage) {
+	private static void bfs_cheese(int startX, int startY, int m, int n, int[][] cabbage) {
 		
 		Queue<int[]> queue = new LinkedList<int[]>();
 		queue.offer(new int[] {startX, startY});

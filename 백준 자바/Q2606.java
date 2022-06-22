@@ -25,10 +25,10 @@ public class Q2606 {
             int y = Integer.parseInt(str[1]);
             computer[x][y] = computer[y][x] = 1;
         }
-        bfs(1);
+        bfs_cheese(1);
         System.out.println(count);
     }
-    private static void bfs(int start) {
+    private static void bfs_cheese(int start) {
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(start);
         check[start] = true;

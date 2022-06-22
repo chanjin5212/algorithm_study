@@ -8,7 +8,7 @@ import java.util.Queue;
 //https://www.acmicpc.net/problem/1697
 public class Q1697 {
 	
-	private static boolean[] visited = new boolean[100001];
+	private static boolean[] visited_cheese = new boolean[100001];
 	private static int result = 0;
 	public static void main(String[] args) throws Exception {
 		
@@ -18,16 +18,16 @@ public class Q1697 {
 		int n = Integer.parseInt(str[0]);
 		int k = Integer.parseInt(str[1]);
 		
-		bfs(n, k);
+		bfs_cheese(n, k);
 		System.out.println(result);
 		
 	}
 
-	private static void bfs(int n, int k) {
+	private static void bfs_cheese(int n, int k) {
 		
 		Queue<Integer> queue = new LinkedList<Integer>();
 		queue.offer(n);
-		visited[n] = true;
+		visited_cheese[n] = true;
 		
 		int level = 0;
 		while(!queue.isEmpty()) {
@@ -35,25 +35,25 @@ public class Q1697 {
 			for (int i=0; i<qsize; i++) {
 				int temp = queue.poll();
 				if (temp < k) {
-					if (temp > 0 && !visited[temp-1]) {
+					if (temp > 0 && !visited_cheese[temp-1]) {
 						queue.offer(temp-1);
-						visited[temp-1] = true;
+						visited_cheese[temp-1] = true;
 					}
-					if (temp*2 <= 100000 && !visited[temp*2]) {
+					if (temp*2 <= 100000 && !visited_cheese[temp*2]) {
 						queue.offer(temp*2);
-						visited[temp*2] = true;
+						visited_cheese[temp*2] = true;
 					}
-					if (temp+1 <= 100000 && !visited[temp+1]) {
+					if (temp+1 <= 100000 && !visited_cheese[temp+1]) {
 						queue.offer(temp+1);
-						visited[temp+1] = true;
+						visited_cheese[temp+1] = true;
 					}
 				} else if (temp == k) {
 					result = level;
 					return;
 				} else {
-					if (temp > 0 && !visited[temp-1]) {
+					if (temp > 0 && !visited_cheese[temp-1]) {
 						queue.offer(temp-1);
-						visited[temp-1] = true;
+						visited_cheese[temp-1] = true;
 					}
 				}
 				

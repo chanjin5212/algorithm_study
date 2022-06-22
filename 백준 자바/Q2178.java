@@ -25,13 +25,13 @@ public class Q2178 {
 			}
 		}
 		
-		bfs(0, 0);
+		bfs_cheese(0, 0);
 		System.out.println(maze[n-1][m-1]);
 		
 		
 	}
 
-	private static void bfs(int startX, int startY) {
+	private static void bfs_cheese(int startX, int startY) {
 		Queue<int[]> queue = new LinkedList<int[]>();
 		queue.offer(new int[] {startX, startY});
 		int[] x = {1, -1, 0, 0};

@@ -10,7 +10,7 @@ import java.util.Queue;
 public class Q1389 {
 	
 	private static int[][] check;
-	private static boolean[] visited;
+	private static boolean[] visited_cheese;
 	private static int n;
 	private static int m;
 	
@@ -31,7 +31,7 @@ public class Q1389 {
 		int min = 100000000;
 		int min_num = 0;
 		for (int i=1; i<=n; i++) {
-			int s = bfs(i);
+			int s = bfs_cheese(i);
 			if (min > s) {
 				min = s;
 				min_num = i;
@@ -40,29 +40,29 @@ public class Q1389 {
 		System.out.println(min_num);
 	}
 
-	private static int bfs(int i) {
+	private static int bfs_cheese(int i) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (int a=1; a<=n; a++) {
-			visited = new boolean[n+1];
+			visited_cheese = new boolean[n+1];
 			if (a == i) {
 				continue;
 			} else {
 				Queue<Integer> queue = new LinkedList<>();
 				queue.offer(i);
-				visited[i] = true;
+				visited_cheese[i] = true;
 				int level = 1;
 				loop:while(!queue.isEmpty()) {
 					int size = queue.size();
 					for (int j=0; j<size; j++) {
 						int temp = queue.poll();
 						for (int k=1; k<=n; k++) {
-							if (check[temp][k] == 1 && !visited[k]) {
+							if (check[temp][k] == 1 && !visited_cheese[k]) {
 								if (k == a) {
 									list.add(level);
 									break loop;
 								}
 								queue.offer(k);
-								visited[k] = true;
+								visited_cheese[k] = true;
 							}
 						}
 					}

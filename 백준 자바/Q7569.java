@@ -13,7 +13,7 @@ public class Q7569 {
     static int n;
     static int h;
     static int[][][] tomato;
-    static boolean[][][] visited;
+    static boolean[][][] visited_cheese;
     static Queue<int[]> queue = new LinkedList<>();
 
 
@@ -27,7 +27,7 @@ public class Q7569 {
 
         //3차원 배열
         tomato = new int[h][n][m];
-        visited = new boolean[h][n][m];
+        visited_cheese = new boolean[h][n][m];
         for (int i=0; i<h; i++) {
             for (int j=0; j<n; j++) {
                 String[] s = reader.readLine().split(" ");
@@ -36,14 +36,14 @@ public class Q7569 {
                     //한번에 진행해야 하기 때문에 다 익은 상태를 미리 넣어놓는다.
                     if (Integer.parseInt(s[k]) == 1) {
                         queue.offer(new int[] {i, j, k});
-                        visited[i][j][k] = true;
+                        visited_cheese[i][j][k] = true;
                     }
                 }
             }
         }
 
-        //bfs를 실행시키고 며칠이 걸리는지 a에 저장시킨다.
-        int a = bfs();
+        //bfs_cheese를 실행시키고 며칠이 걸리는지 a에 저장시킨다.
+        int a = bfs_cheese();
         for (int i=0; i<h; i++) {
             for (int j=0; j<n; j++) {
                 for (int k=0; k<m; k++) {
@@ -59,7 +59,7 @@ public class Q7569 {
 
     }
 
-    private static int bfs() {
+    private static int bfs_cheese() {
 
         //상하좌우앞뒤
         int[] dx = {1, -1, 0, 0, 0, 0};
@@ -84,7 +84,7 @@ public class Q7569 {
                     if (tomato[nextX][nextY][nextZ] == 0) {
                         tomato[nextX][nextY][nextZ] = 1;
                         queue.offer(new int[] {nextX, nextY, nextZ});
-                        visited[nextX][nextY][nextZ] = true;
+                        visited_cheese[nextX][nextY][nextZ] = true;
                     }
                 }
             }

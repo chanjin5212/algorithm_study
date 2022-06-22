@@ -8,14 +8,14 @@ import java.util.Queue;
 
 //https://www.acmicpc.net/problem/10026
 public class Q10026 {
-    static boolean[][] visited;
+    static boolean[][] visited_cheese;
     static String[][] RGB;
     static String[][] RB;
     static int n;
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(reader.readLine());
-        visited = new boolean[n][n];
+        visited_cheese = new boolean[n][n];
         RGB = new String[n][n];
         RB = new String[n][n];
         for (int i=0; i<n; i++) {
@@ -30,8 +30,8 @@ public class Q10026 {
         int cnt = 0;
         for (int i=0; i<n; i++) {
             for (int j=0; j<n; j++) {
-                if (!visited[i][j]) {
-                    bfs(i, j, RGB);
+                if (!visited_cheese[i][j]) {
+                    bfs_cheese(i, j, RGB);
                     cnt++;
                 }
             }
@@ -39,11 +39,11 @@ public class Q10026 {
         System.out.print(cnt + " ");
 
         cnt = 0;
-        visited = new boolean[n][n];
+        visited_cheese = new boolean[n][n];
         for (int i=0; i<n; i++) {
             for (int j=0; j<n; j++) {
-                if (!visited[i][j]) {
-                    bfs(i, j, RB);
+                if (!visited_cheese[i][j]) {
+                    bfs_cheese(i, j, RB);
                     cnt++;
                 }
             }
@@ -51,10 +51,10 @@ public class Q10026 {
         System.out.print(cnt);
     }
 
-    private static void bfs(int x, int y, String[][] res) {
+    private static void bfs_cheese(int x, int y, String[][] res) {
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[] {x, y});
-        visited[x][y] = true;
+        visited_cheese[x][y] = true;
 
         int[] dx = {1, -1, 0, 0};
         int[] dy = {0, 0, 1, -1};
@@ -70,9 +70,9 @@ public class Q10026 {
                     continue;
                 }
 
-                if (res[nextX][nextY].equals(res[x][y]) && !visited[nextX][nextY]) {
+                if (res[nextX][nextY].equals(res[x][y]) && !visited_cheese[nextX][nextY]) {
                     queue.offer(new int[] {nextX, nextY});
-                    visited[nextX][nextY] = true;
+                    visited_cheese[nextX][nextY] = true;
                 }
             }
 
